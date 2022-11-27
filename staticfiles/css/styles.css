@@ -181,16 +181,15 @@ body {
   justify-content: space-between;
 }
 
-.fa-solid {
-	margin: 6px 0 0 91%;
-	font-size: 29px;
-	cursor: pointer;
-	float: right;
-	width: 28px;
-	text-align: center;
+.close-icon{
+width: 3%;
+  min-width: 30px;
+  cursor: pointer;
+  margin: 6px 0 0 91%;
+
 }
 
-.fa-solid:hover {
+.close-icon:hover {
   border-radius: 34px;
   background: azure;
   transition: 0.3s ease;
