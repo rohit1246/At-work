@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+  <link rel="stylesheet" href="{% static 'css/register.css' %}">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+
+  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Charm&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=EB Garamond" rel="stylesheet" />
+</head>
+
+<body>
+
+<h1 id="page-heading">Sign up</h1>
+<a href="{{request.META.HTTP_REFERER}}"><img src="{% static 'images/atwork/back.png'%}" alt="" id="back-img"></a>
+
+
+  <div class="form-contents">
+    <div class="display-errors">
+      {% if messages %}
+        {% for message in messages %}
+        <div class="message-errors">
+          {{message}}
+        </div>
+        {% endfor %}
+      {% endif %}
+      
+      {% if form.errors %}
+        <div class="form-errors">
+          {{form.errors}}
+        </div>
+      {% endif %}
+
+      <!-- <div class="message-errors">
+        An error occurred!
+      </div>
+      <div class="form-errors">
+        <ul class="errorlist">
+          <li>password2<ul class="errorlist">
+              <li>The two password fields didn’t match.</li>
+            </ul>
+          </li>
+          <li>username<ul class="errorlist">
+              <li>A user with that username already exists.</li>
+            </ul>
+          </li>
+        </ul>
+      </div> -->
+
+
+
+    </div>
+
+
+    <form method="POST" action="{% url 'register' %}" class="login_form">
+
+      {% csrf_token %}
+      <div class="info">
+        <div class="user-info">
+
+          <label for="f-name" class="form-margins">First name</label>
+          {{form.first_name}}
+
+          <label for="l-name" class="form-margins form-signup">Last name</label>
+          {{form.last_name}}
+
+
+          <label for="phno." class="form-margins">Phone Number</label>
+          {{userdataform.phoneNumber}}
+
+          <label for="phno." class="form-margins">User name</label>
+          {{form.username}}
+
+          <label for="email-id" class="form-margins">Email id</label>
+          {{form.email}}
+
+          <label for="pwd" class="form-margins">Enter password</label>
+          {{form.password1}}
+
+          <label for="pwd" class="form-margins">Confirm password</label>
+          {{form.password2}}
+
+          <label for="states" class="form-margins ">State</label>
+          {{userdataform.state}}
+
+          <label for="cities" class="form-margins">City</label>
+          {{userdataform.city}}
+        </div>
+
+        <div class="work-info user-info">
+          <div class="workset">
+            <label>Electrician</label>
+            {{userdataform.electrician}}
+          </div>
+          <div class="workset">
+            <label>Plumber</label>
+            {{userdataform.plumber}}
+          </div>
+          <div class="workset">
+            <label>Tailor</label>
+            {{userdataform.tailor}}
+          </div>
+          <div class="workset">
+            <label>Tutor</label>
+            {{userdataform.tutor}}
+          </div>
+          <div class="workset">
+            <label>Transport</label>
+            {{userdataform.transport}}
+          </div>
+          <div class="workset">
+            <label>Car repair</label>
+            {{userdataform.carrepair}}
+          </div>
+
+          <div class="workset">
+            <label>Painter</label>
+            {{userdataform.painter}}
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- <button class="submit-button"></button> -->
+      <button class="button-6 submit-button" role="button">Sign up</button>
+
+    </form>
+
+  </div>
+
+</body>
+
+</html>
+
+
+
+
+<!-- <label for="zipcodes" class="form-margins form-signup">Zipcode</label>
+            <input type="text" class="form-margins form-signup" name="zipcodes"> -->
+
+<!-- <div class="check-box form-margins form-signup">
+              <input type="checkbox" name="option-to-freelance" id="options-check-box" onclick="openWorkOptions()">
+            <label for="option-to-freelance">Select this if you want to work as a  <b>freelancer</b></label>
+            </div>
+
+            <div id="work-options" class="form-signup">
+              <label for="work" class="form-margins">Select your freelance work</label>
+            <select name="work" id="">
+              <option value="Electrician">Electrician</option>
+              <option value="Plumber">Plumber</option>
+              <option value="Tailor">Tailor</option>
+              <option value="Car repair">Car repair</option>
+              <option value="Painting">Painting</option>
+              <option value="Transport">Transport</option>
+              <option value="Men's saloon">Men's saloon</option>
+              <option value="Women's makeup">Women's makeup</option>
+              <option value="Bike repair">Bike repair</option>
+              <option value="TV repair">TV repair</option>
+              <option value="AC repair">AC repair</option>
+              
+            </select>
+            </div> -->
+
+
+<!-- <form action="" class="login_form">
+    <label for="f-name" class="form-margins form-signup f-name">First name</label>
+    <input type="text" class="form-margins i-fname form-signup" name="f-name">
+
+    <label for="l-name" class="lname form-margins form-signup">Last name</label>
+    <input type="text" class="form-margins i-lname form-signup" name="l-name">
+
+    <label for="phno." class="phno form-margins">Phone Number</label>
+    <input type="text" name="phno." class="form-margins" required>
+
+    <label for="email-id" class="form-margins">Email id</label>
+    <input type="email" name="email-id" class="form-margins" id="">
+
+    <label for="pwd" class="pswd form-margins">Password</label>
+    <input type="password" name="pwd" class="form-margins" id="" required>
+    
+    <label for="states" class="form-margins form-signup">State</label>
+    <input type="text" name="states" class="form-margins form-signup">
+    
+    <label for="cities" class="form-margins form-signup">City</label>
+    <input type="text" class="form-margins form-signup" name="cities">
+
+    <label for="zipcodes" class="form-margins form-signup">Zipcode</label>
+    <input type="text" class="form-margins form-signup" name="zipcodes">
+
+    <div class="check-box form-margins form-signup">
+      <input type="checkbox" name="option-to-freelance" id="options-check-box" onclick="openWorkOptions()">
+    <label for="option-to-freelance">Select this if you want to work as a  <b>freelancer</b></label>
+    </div>
+
+    <div id="work-options" class="form-signup">
+      <label for="work" class="form-margins">Select your freelance work</label>
+    <select name="work" id="">
+      <option value="Electrician">Electrician</option>
+      <option value="Plumber">Plumber</option>
+      <option value="Tailor">Tailor</option>
+      <option value="Car repair">Car repair</option>
+      <option value="Painting">Painting</option>
+      <option value="Transport">Transport</option>
+      <option value="Men's saloon">Men's saloon</option>
+      <option value="Women's makeup">Women's makeup</option>
+      <option value="Bike repair">Bike repair</option>
+      <option value="TV repair">TV repair</option>
+      <option value="AC repair">AC repair</option>
+      
+    </select>
+    </div>
+
+    <button class="form-margins" id="submit">Sign up</button>
+
+    
+  </form> -->

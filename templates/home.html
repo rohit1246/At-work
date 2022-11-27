@@ -1,0 +1,424 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>At Work</title>
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+
+  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Charm&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=EB Garamond" rel="stylesheet" />
+  <script type="text/javascript">
+    function openElectrician() {
+
+      window.location.href = "{% url 'work' 'Electricians' %}";
+    }
+    function openPlumber() {
+
+      window.location.href = "{% url 'work' 'Plumbers' %}";
+    }
+    function openPainter() {
+
+      window.location.href = "{% url 'work' 'Painters' %}";
+    }
+    function openCarrepair() {
+
+      window.location.href = "{% url 'work' 'Car repair' %}";
+    }
+    function openTransport() {
+
+      window.location.href = "{% url 'work' 'Transport' %}";
+    }
+    function openTutor() {
+
+      window.location.href = "{% url 'work' 'Tutors' %}";
+    }
+    function openTailor() {
+
+      window.location.href = "{% url 'work' 'Tailors' %}";
+    }
+
+    function openLogout() {
+      window.location.href = "{% url 'logout' %}";
+    }
+
+    function openSignup() {
+      window.location.assign('{% url "register" %}');
+    }
+
+    function gotoHome() {
+      window.location.href = "{% url 'home' %}";
+    }
+
+    function openSettings() {
+      window.location.href = "{% url 'profile-settings' %}"
+    }
+  </script>
+
+</head>
+
+
+<body>
+  <!-- <script src="index.js"></script> -->
+
+  <div id="header">
+    <img src="{% static 'images/logo2.png' %}" alt="" onclick="gotoHome()" id="logo-img" />
+    <div class="searchar-and-loc">
+
+      <form action="{% url 'search' %}" method="POST" class="search-bar">
+        {% csrf_token %}
+        <select name="work" id="works">
+          <option name="worktype" value="electrician">Electrician</option>
+          <option name="worktype" value="tutor">Tutors</option>
+          <option name="worktype" value="transport">Transport</option>
+          <option name="worktype" value="painter">Painters</option>
+          <option name="worktype" value="tailor">Tailors</option>
+          <option name="worktype" value="carrepair">Car repair</option>
+          <option name="worktype" value="plumber">Plumbers</option>
+        </select>
+        <input id="location" type="textfield" name="city-location" placeholder="Enter a city">
+        <button type="submit" class="submit-button"><i class="fa fa-search" aria-hidden="true"></i>Search</button>
+      </form>
+
+    </div>
+
+    <div class="authentication">
+
+      <div class="profile">
+        <div class="profile-pic">
+          <!-- {% if user.is_authenticated %}
+          {% for x in pic %}
+
+          {% if x.profile_pic %}
+          <img src="{{ x.profile_pic.url }}" alt="profile-img" id="profile-img" onclick="toggleProfileDropdown()">
+          {% else %}
+          <img src="{% static 'images/man.png' %}" alt="profile-img" id="profile-img">
+          {% endif %}
+
+          {% endfor %}
+          {% else %} -->
+          <!-- {% endif %} -->
+          <img src="{% static 'images/man.png' %}" alt="profile-img" id="profile-img" onclick="toggleProfileDropdown()">
+          
+ 
+
+        </div>
+
+        <div id="profile-dropdown" style="display:block;">
+          {% if user.is_authenticated %}
+          <div class="profile-settings" id="settings-page" onclick="openSettings()">
+            Settings
+          </div>
+          <div class="profile-settings" onclick="toggleDeleteAccount()">
+            Delete Account
+          </div>
+
+          <div class="profile-settings" onclick="openLogout()">
+            logout
+          </div>
+          {% else %}
+          <a href="{% url 'register' %}">
+            <div class="profile-settings" onclick="openSignup()">
+              Sign up
+            </div>
+          </a>
+
+          <div class="profile-settings" onclick="openLoginForm()">
+            Login
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+  <div id="navbar">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="#">Our mission</a></li>
+      <li><a href="#">Contact us</a></li>
+    </ul>
+  </div>
+
+
+  <div id="delete-account" style="display:none;">
+    <div class="login_signup_form_container">
+      <i class="fa-solid fa-xmark" onclick="toggleDeleteAccount()"></i>
+      <div class="login_signup_form_content">
+        <p class="delete-acc">Permanently delete account</p>
+        <div class="form-contents">
+          <form action="{% url 'deleteaccount' %}" method="POST" class="login_form">
+            {% csrf_token %}
+
+            <label for="email" class="form-margins">Enter e-mail ID</label>
+            <input type="email" name="email" id="" required class="form-margins" placeholder="e.g. john@gmail.com">
+
+            <label for="phoneNumber" class="form-margins">Phone number</label>
+            <input type="text" name="phoneNumber" id="" class="form-margins" placeholder="e.g. 9876543214">
+
+            <button type="submit" class="button-6">Delete Account</button>
+
+
+          </form>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+  <div id="login_signup_form">
+    <div class="login_signup_form_container">
+      <i class="fa-solid fa-xmark" onclick="closeLoginForm()"></i>
+      <div class="login_signup_form_content">
+
+        <p id="login">Login</p>
+        <div class="form-contents">
+          <form method="POST" action="{% url 'login' %}" class="login_form">
+            {% csrf_token %}
+            <label class="form-margins">Phone Number</label>
+            <input type="text" name="phoneNumber" class="form-margins" placeholder="e.g. 9856234174">
+            <br><br>
+            <label class="form-margins">Email id</label>
+            <input type="email" name="email" class="form-margins" placeholder="e.g. john@gmail.com" required>
+
+            <label for="pwd" class="pswd form-margins">Password</label>
+            <input type="password" name="password" class="form-margins" id="" required>
+
+            <button type="submit" class="button-6">Login</button>
+          </form>
+          {% if messages %}
+          {% for message in messages %}
+          {{message}}
+          {% endfor %}
+          {% endif %}
+          <br>
+          {% if form.errors %}
+          {{form.errors}}
+          {% endif %}
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div id="login_form_bg">
+  </div>
+
+
+  <!--------------------------------------->
+  <div id="theme">
+    <div class="theme_text">
+      <h1 class="motto">Any service,</h1>
+      <h2 class="motto">at your place</h2>
+      <h1 class="motto">Just a call away...</h1>
+    </div>
+    <div class="theme-img">
+      <img src="{% static 'images/all_in_one-2.png' %}" alt="" />
+    </div>
+    
+  </div>
+
+  <!------------------------------------>
+  <h2 class="freq_used">- Frequently used services -</h2>
+  <div id="freq_services">
+    <div class="jobs-container">
+
+      <div class="jobs jobs_effects" onclick="openElectrician()">
+        <img src="{% static 'images/atwork/electricity.png' %}" alt="electician" />
+        <p>Electrician</p>
+      </div>
+
+      <div class="jobs jobs_effects" onclick="openPlumber()">
+        <img src="{% static 'images/atwork/plumber.png' %}" alt="plumber" />
+        <p>Plumbers</p>
+      </div>
+      <div class="jobs jobs_effects" onclick="openCarrepair()">
+        <img src="{% static 'images/atwork/car repair.png' %}" alt="painting" />
+        <p>Car repair</p>
+      </div>
+      <div class="jobs jobs_effects" onclick="openPainter()">
+        <img src="{% static 'images/atwork/painting.png' %}" alt="painting" />
+        <p>Painters</p>
+      </div>
+      <div class="jobs jobs_effects" onclick="openTailor()">
+        <img src="{% static 'images/atwork/tailor.png' %}" alt="tailor" />
+        <p>Tailors</p>
+      </div>
+      <div class="jobs jobs_effects" onclick="openTransport()">
+        <img src="{% static 'images/atwork/transport.png' %}" alt="transport" />
+        <p>Transport</p>
+      </div>
+      <div class="jobs jobs_effects" onclick="openTutor()">
+        <img src="{% static 'images/atwork/tutor.png' %}" alt="tutor" />
+        <p>Tutors</p>
+      </div>
+    </div>
+  </div>
+  <h2 class="freq_used">See What Our Customers Have to Say ✨</h2>
+
+  <div class="reviews">
+
+    <div class="review1">
+      <img src="{% static 'images/atwork/review1.jpg'%}" alt="">
+
+      <span>"</span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, earum
+      nihil. Laudantium commodi consequatur sunt quas eius harum delectus
+      nulla tempore ab asperiores voluptates quam soluta deleniti quibusdam
+      aut velit vel voluptate optio perferendis quod aspernatur, praesentium
+      omnis libero. Libero soluta ullam eos numquam ipsam. Omnis voluptates
+      minima earum accusamus.<span>"</span> <br> <strong>-Joseph</strong>
+    </div>
+    <div class="review1">
+      <img src="{% static 'images/atwork/review2.jpg'%}" alt="">
+      <span>"</span> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti
+      impedit, expedita voluptatibus sit rem molestias nobis repellat
+      praesentium. Ipsam vitae quidem voluptatum aut ut qui est deleniti
+      corporis assumenda pariatur.<span>"</span><br><strong>-Laura</strong>
+    </div>
+
+  </div>
+
+  <h2 class="freq_used">Home Services | All kinds of servies are available</h2>
+  <div class="category_jobs">
+    <div class="category_jobs_con">
+      <div class="jobs category_jobs_effects" onclick="">
+        <img src="{% static 'images/atwork/electricity.png' %}" alt="electician" />
+        <p>Electrician</p>
+      </div>
+      <div class="jobs category_jobs_effects">
+        <img src="{% static 'images/atwork/plumber.png' %}" alt="plumber" />
+        <p>Plumber</p>
+      </div>
+      <div class="jobs category_jobs_effects">
+        <img src="{% static 'images/atwork/car repair.png' %}" alt="painting" />
+        <p>Car repair</p>
+      </div>
+      <div class="jobs category_jobs_effects">
+        <img src="{% static 'images/atwork/painting.png' %}" alt="painting" />
+        <p>Painting</p>
+      </div>
+      <div class="jobs category_jobs_effects">
+        <img src="{% static 'images/atwork/tailor.png' %}" alt="tailor" />
+        <p>Tailor</p>
+      </div>
+      <div class="jobs category_jobs_effects">
+        <img src="{% static 'images/atwork/transport.png' %}" alt="transport" />
+        <p>Transport</p>
+      </div>
+      <div class="jobs category_jobs_effects">
+        <img src="{% static 'images/atwork/tutor.png' %}" alt="tutor" />
+        <p>Tutor</p>
+      </div>
+      <div class="jobs category_jobs_effects">
+        <img src="{% static 'images/atwork/makeup.png' %}" alt="makeup" />
+        <p>Makeup</p>
+      </div>
+      <div class="jobs category_jobs_effects">
+        <img src="../static/images/home repairs/carpenter.png" alt="makeup" />
+        <p>Carpenters</p>
+      </div>
+      <div class="jobs category_jobs_effects">
+        <img src="../static/images/home repairs/food-delivery.png" alt="makeup" />
+        <p>Food Delivery</p>
+      </div>
+      <div class="jobs category_jobs_effects">
+        <img src="../static/images/home repairs/laundry.png" alt="makeup" />
+        <p>Laundry</p>
+      </div>
+      <div class="jobs category_jobs_effects">
+        <img src="../static/images/home repairs/mason.png" alt="makeup" />
+        <p>Mason</p>
+      </div>
+      <div class="jobs category_jobs_effects">
+        <img src="../static/images/home repairs/refrigerator-repair.png" alt="makeup" />
+        <p>Appliances repair</p>
+      </div>
+      <div class="jobs category_jobs_effects">
+        <img src="../static/images/home repairs/tvrepair.png" alt="makeup" />
+        <p>Tv repair</p>
+      </div>
+      <div class="jobs category_jobs_effects">
+        <img src="../static/images/home repairs/pest_cleaning.png" alt="makeup" />
+        <p>Pest Cleaning</p>
+      </div>
+    </div>
+  </div>
+  <h2 id="procedure_heading">
+    Join our platform to find potential customers more <span>easily,</span><br />
+    with absolute zero charges.
+  </h2>
+  <div class="procedures">
+    <h3>Follow these 3 simple steps:</h3>
+    <div class="procedures_sec">
+      <div class="procedure">
+        <img src="{% static 'images/atwork/register.png' %}" alt="" />
+        <p>
+          <strong>1. </strong> Decide the work and location that you're interested in.
+        </p>
+      </div>
+      <div class="procedure">
+        <img src="{% static 'images/atwork/available.png' %}" alt="" />
+        <p>
+          <strong>2. </strong>Register yourself as a professional in one or more fields
+          that you wish to work with appropriate contact details.
+        </p>
+      </div>
+      <div class="procedure">
+        <img src="{% static 'images/atwork/service.png' %}" alt="" />
+
+        <p>
+          <strong>3. </strong><span>And that's it!</span> your customers will
+          contact you directly for work. 
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="freq_used">Beauty and Health</h2>
+  <div class="category_jobs">
+    <div class="category_jobs_con">
+      <div class="jobs category_jobs_effects">
+        <img src="{% static 'images/beauty_and_health/saloon.png' %}" alt="painting" />
+        <p>Barber</p>
+      </div>
+      <div class="jobs category_jobs_effects">
+        <img src="../static/images/beauty_and_health/massage.png" alt="" />
+        <p>Massage</p>
+      </div>
+      <div class="jobs category_jobs_effects">
+        <img src="../static/images/atwork/makeup.png" alt="" />
+        <p>Makeup</p>
+      </div>
+      <div class="jobs category_jobs_effects">
+        <img src="../static/images/beauty_and_health/baby_sitter.png" alt="" />
+        <p>Baby sitting</p>
+      </div>
+      <div class="jobs category_jobs_effects">
+        <img src="../static/images/beauty_and_health/doctor.png" alt="" />
+        <p>Doctor</p>
+      </div>
+      <div class="jobs category_jobs_effects">
+        <img src="../static/images/beauty_and_health/nurse.png" alt="" />
+        <p>Nursing</p>
+      </div>
+    </div>
+
+    <script src="{% static 'js/index.js' %}"></script>
+
+</body>
+
+</html>
