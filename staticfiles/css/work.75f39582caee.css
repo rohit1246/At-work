@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100&display=swap');
+
+*{
+    /* font-family: 'Charm', cursive; */
+    /* font-family: 'EB Garamond'; */
+    font-family: 'League Spartan', sans-serif;
+    zoom: 98%;
+}
+
+#back-img{
+    width: 3%;
+    min-width: 30px;
+    margin: 0 0 0 30px;
+    cursor: pointer;
+}
+#back-img:hover {
+	background: #87cefae3;
+	border-radius: 34px;
+}
+
+#page-heading {
+  text-align: center;
+}
+
+body{    
+    margin: 0px;
+    /* background-color: #FCFFE7; */
+    height: 1000px;
+    background-image: url("../images/bg-4.24e15aeb3b4f.jpg");
+    background-size: contain;
+}
+
+header h1{
+    text-align: center;
+    font-size: 50px;
+}
+
+.handy-man-container {
+	/* display: flex; */
+	/* display: grid; */
+	/* grid-template-columns: auto auto auto; */
+	background-color: #FCFFE7;
+	margin: 12px;
+	/* height: 800px; */
+	padding: 10px;
+	/* flex-wrap: wrap; */
+	/* flex-wrap: wrap; */
+	justify-content: space-around;
+}
+.hm-container{
+    display: inline-block;
+}
+.handy-man {
+	display: flex;
+	/* align-items: center; */
+	background-color: #fff;
+	width: 335px;
+	height: 229px;
+	justify-content: space-between;
+	margin: 10px;
+}
+.handy-man-left-sec{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background: antiquewhite;
+    width: 150px;
+}
+.handy-man-left-sec .profile-img{
+    width: 105px;
+    margin-top: 10px;
+}
+
+.contact-details{
+    display: flex;
+    align-items: center;
+    width: 140px;
+    justify-content: space-evenly;
+    margin-top: 15px; 
+}
+.contact-details img:hover{
+    padding: 0px;
+}
+.contact-details img{
+    width: 28px;
+    box-sizing: border-box;
+    padding: 3px;
+}
+
+.handy-man-right-sec{
+    box-sizing: border-box;
+    width: 200px;
+    padding: 10px;
+}
+.hm-buttons{
+
+}
+
+.handy-man-right-sec p {
+    margin: 16px 0;
+    box-sizing: border-box;
+}
+
+.hm-buttons input{
+    /* background: transparent; */
+    width: 107px;
+    font-weight: bolder;
+    margin: 4px 28px;
+    background: antiquewhite;
+}
+.hm-buttons:hover{
+
+}
+
+@media only screen and (max-width:400px){
+    .handy-man-container {
+        min-width: 290px;
+    }
+    .handy-man {
+        width: 265px;
+        height: 223px;
+        margin: 3px auto;
+    }
+    .handy-man-left-sec {
+        width: 105px;
+    }
+    .handy-man-left-sec .profile-img {
+        width: 73px;
+    }
+    .contact-details {
+        width: 112px;
+    }
+    .contact-details {
+        width: 112px;
+    }
+
+
+}
