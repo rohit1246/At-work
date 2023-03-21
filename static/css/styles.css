@@ -1,29 +1,21 @@
 @import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@100&display=swap");
 
 * {
-  /* font-family: 'Charm', cursive; */
-  /* font-family: 'EB Garamond'; */
   font-family: "League Spartan", sans-serif;
-  /* border: 1px solid black; */
   zoom: 98%;
 }
 
 body {
   margin: 0px;
-  background-color: #fcffe7;
-  /* height: 5000px; */
-  background-image: url("../images/bg-4.jpg");
+  background-color: white;
   background-size: contain;
   position: relative;
 }
 #header {
-  background-image: url(../images/atwork/ht1.jpg);
-  height: 166px;
-  /* background-repeat: no-repeat; */
-  background-size: contain;
+  background-color: #009EFF;
+  height: 100px;
   display: flex;
   justify-content: space-between;
-  /* position: relative; */
   min-width: 460px;
 }
 
@@ -31,12 +23,11 @@ body {
   color: antiquewhite;
   margin: 5% 0 0 15%;
   font-size: 3vw;
-  /* padding: 2% 20%; */
+
   width: 14%;
   height: 108px;
   min-width: 120px;
   text-align: center;
-  /* align-items: center; */
   background-color: brown;
   padding: 1% 2% 1% 2%;
   box-sizing: border-box;
@@ -49,13 +40,13 @@ body {
   margin: 44px 0 0 1%;
   width: 262px;
   height: 88px;
-  /* min-width: 160px; */
   border-radius: 50px;
   margin: 44px 0 0 1%;
 }
 .searchar-and-loc {
   width: 500px;
   display: flex;
+  margin-left: 700px;
   justify-content: space-between;
 }
 .search-bar {
@@ -64,81 +55,73 @@ body {
   align-items: center;
   height: 100%;
   width: 400px;
-  background: beige;
-  /* height: 52%; */
-  margin: auto 0;
+  background: none;
+  margin-right: 5px;
   height: 80px;
 }
 #works {
-  margin: 4px auto;
-  /* margin: auto 4px; */
+  margin: 4px auto ;
+  margin-right: 5px;
   width: 143px;
   height: auto;
-  font-size: 22px;
+  font-size: 18px;
   background: white;
   font-weight: bold;
-  /* margin: auto 12px; */
   border-radius: 6px;
   padding: 6px;
   box-sizing: border-box;
 }
 
 #location {
-  margin: 4px auto;
-  width: 107px;
-  /* margin-top: 72px; */
+  margin: 5px auto;
+  padding: 15px;
+  width: 157px;
   height: 35px;
+  color: #0014FF;
   font-size: 22px;
   font-weight: bold;
-  /* margin: auto 12px; */
   text-align: center;
-  border-radius: 7px;
+  border-radius: 5px;
 }
 .submit-button {
-  margin: 4px auto;
-  width: 111px;
-  height: 37px;
-  font-size: 22px;
-}
-.fa-search {
-  font-size: 16px;
-  margin: 4px;
+  width: 100px;
+  margin-left: 4px;
+  font-size: large;
+  color: #0014FF;
+  text-align: center;
+  border-radius: 5px;
+  padding: 3px;
 }
 
 .authentication {
   display: flex;
-  /* background: antiquewhite; */
-  /* width: 500px; */
 }
 .profile {
+  margin-top: 3px;
+  margin-bottom: 3px;
   width: 179px;
   text-align: center;
   z-index: 10;
-  /* margin: 0 0 0 312px; */
 }
 
 .profile-pic {
-	
+
 	width: 77px;
 	height: 77px;
-	margin: 54px auto auto;
-	/* text-align: center; */
+	margin: 15px 0px 0px 50px;
 }
 
 #profile-img {
   width: 77px;
   height: 77px;
-  /* margin: 54px 0 0 0; */
   cursor: pointer;
   border-radius: 50px;
 }
 
 #profile-dropdown {
   background: azure;
-  /* margin: 0 22px; */
   box-sizing: border-box;
   padding: 4px 15px;
-  display: none;
 }
 #profile-dropdown a{
   text-decoration: none;
@@ -152,11 +135,13 @@ body {
   box-sizing: border-box;
   padding: 10px;
   font-size: 21px;
+  color: #0014FF;
   font-weight: bolder;
 }
 
 .profile-settings:hover {
-  background: beige;
+  background: #00E7FF;
+  color: white;
   cursor: pointer;
 }
 .profile-settings a {
@@ -165,7 +150,7 @@ body {
 
 #login_signup_form {
   position: absolute;
-  background-color: antiquewhite;
+  background-color: #009EFF;
   width: 412px;
   /* height: 500px; */
   top: 17vh;
@@ -173,6 +158,9 @@ body {
   z-index: 22;
   position: fixed;
   display: none;
+}
+#login{
+  color: white;
 }
 
 .login_signup_form_container {
@@ -207,9 +195,7 @@ width: 3%;
   font-size: 30px;
 }
 .form-contents {
-  /* width: 463px; */
   margin: 0px 20px 10px;
-  /* height: 408px; */
   background-color: azure;
   padding: 10px;
 }
@@ -274,7 +260,7 @@ width: 3%;
 
 #delete-account{
   position: absolute;
-  background-color: antiquewhite;
+  background-color: #009EFF;
   /* width: 412px; */
   /* height: 500px; */
   top: 17vh;
@@ -285,6 +271,7 @@ width: 3%;
   margin: 7px;
 }
 .delete-acc{
+  color: white;
   text-align: center;
   margin: auto 13px;
   font-size: 30px;
@@ -320,29 +307,35 @@ width: 3%;
 #navbar {
   /* position: sticky;
     top: 0; */
+  height: 100px;
   box-sizing: border-box;
-  padding: 1px;
-  background-color: #e3e3e3;
+  width: 100%;
+  padding: 20px;
+  background-color: #009EFF;
 }
 #navbar ul {
   display: flex;
   justify-content: space-evenly;
+  margin-top: 5px;
 }
 #navbar li {
   list-style: none;
-  width: 121px;
+  width: 200px;
   text-align: center;
-  padding: 5px;
-}
-#navbar li:hover {
-  background-color: #fcffe7;
-  box-shadow: 1px 1px 4px 0px;
-  width: 121px;
+  padding: 10px;
 }
 #navbar li a {
   text-decoration: none;
-  color: #0e0eec;
-  font-weight: 900;
+  color: white;
+  font-size: 30px;
+  font-weight: 20px;
+}
+#navbar li a:hover {
+  background-color: white;
+  color: #009EFF;
+  padding: 15px;
+  font-weight: 30px;
+  border-radius: 5px;
 }
 
 #theme {
@@ -353,7 +346,7 @@ width: 3%;
   /* text-align: center; */
   /* height: 315px; */
   position: relative;
-  background-color: #fcffe7;
+  background-color: white;
 }
 .theme_text {
   /* width: 100%;
@@ -371,47 +364,36 @@ width: 3%;
   display: block;
   width: 100%;
   margin: 0;
-  color: black;
-  text-align: center;
+  color: #0014FF;
   padding: 0;
-  /* font-family: 'Charm', cursive; */
   font-family: "EB Garamond";
-  /* font-family: 'League Spartan', sans-serif; */
   font-weight: bolder;
-  /* text-shadow: -1px 1px 2px #000; */
-  /* -webkit-text-stroke: 1px white; */
-  /* -webkit-text-stroke: 1px #282828; */
-  /* text-shadow: 0px 4px 4px #282828; */
   text-shadow: 0px 3px 0 white, 0px 0px 0 white, 1px -1px 0 white;
 }
 #theme img {
   width: 30%;
-  /* min-width: 400px; */
   margin-left: 60%;
   display: inline-block;
   max-width: 307px;
 }
-.theme-img{
-
-}
 
 #freq_services {
-  /* background-color: #FCFFE7; */
   padding: 17px;
+  background-color: #00E7FF;
 }
 
 .jobs-container {
-  /* margin: 3%; */
-  /* background-color: #FCFFE7; */
-  border: 1px solid #222;
+  border: 3px solid white;
+  background-color: #00E7FF;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  border-radius: 50px;
+  border-radius: 10px;
 }
 .freq_used {
   text-align: center;
   background-color: #fff;
+  color: #009EFF;
   padding: 30px;
 }
 
@@ -421,18 +403,17 @@ width: 3%;
   border-radius: 4px;
   display: inline-block;
   padding: 8px;
+  background-color: white;
   box-sizing: border-box;
   cursor: pointer;
-  /* box-shadow: 0px 0px 10px 0px rgb(25 78 105); */
 }
 .jobs_effects {
   box-shadow: 0px 0px 10px 0px rgb(25 78 105);
 }
 .jobs_effects:hover {
-  /* background-color: #fff; */
   padding: 0px;
-  /* width:125px;
-    z-index: 2px; */
+  border: 4px solid #009EFF;
+  border-radius: 3px;
 }
 .jobs img {
   width: 100%;
@@ -444,10 +425,15 @@ width: 3%;
   color: darkmagenta;
   margin: 0;
 }
+#new{
+  background-color: white;
+}
 
 .reviews {
   display: flex;
   justify-content: space-between;
+  background-color: #00FFF6;
+  padding: 10px;
 }
 
 .review1 {
@@ -473,6 +459,7 @@ width: 3%;
 
 .category_jobs {
   /* background-color: #FCFFE7; */
+  background-color: white;
   padding: 30px;
 }
 .category_jobs_effects{
@@ -488,13 +475,16 @@ width: 3%;
 
 #procedure_heading {
   text-align: center;
-  background-color: beige;
+  background-color: white;
+  color: #0014FF;
   padding: 30px;
 }
 #procedure_heading span {
   color: blueviolet;
 }
-
+.procedures{
+  background-color: white;
+}
 .procedures h3 {
   margin: 23px 0 23px 2%;
   font-size: 32px;
@@ -504,7 +494,7 @@ width: 3%;
   display: flex;
   justify-content: space-between;
   /* background-color: #FCFFE7; */
-  background-color: beige;
+  background-color: #00E7FF;
   margin: 0 9px;
 }
 .procedure {
@@ -551,11 +541,6 @@ width: 3%;
     width: auto;
     padding: 10px;
   }
-
-  #location {
-  }
-  #searchbar {
-  }
   #profile-dropdown {
     position: absolute;
     z-index: 20;
@@ -577,12 +562,9 @@ width: 3%;
   }
 
   #freq_services {
-    /* background-color: #FCFFE7; */
     padding: 5px;
   }
   .jobs-container {
-    /* margin: 3%; */
-    /* background-color: #FCFFE7; */
     border: 1px solid #222;
     display: flex;
     justify-content: space-between;

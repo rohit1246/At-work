@@ -36,15 +36,10 @@ header h1{
 }
 
 .handy-man-container {
-	/* display: flex; */
-	/* display: grid; */
-	/* grid-template-columns: auto auto auto; */
+
 	background-color: #FCFFE7;
 	margin: 12px;
-	/* height: 800px; */
 	padding: 10px;
-	/* flex-wrap: wrap; */
-	/* flex-wrap: wrap; */
 	justify-content: space-around;
 }
 .hm-container{
@@ -52,7 +47,6 @@ header h1{
 }
 .handy-man {
 	display: flex;
-	/* align-items: center; */
 	background-color: #fff;
 	width: 335px;
 	height: 229px;
@@ -102,7 +96,6 @@ header h1{
 }
 
 .hm-buttons input{
-    /* background: transparent; */
     width: 107px;
     font-weight: bolder;
     margin: 4px 28px;
@@ -111,6 +104,15 @@ header h1{
 .hm-buttons:hover{
 
 }
+
+button{
+    text-decoration: none;
+font-size: 25px;
+}
+a{
+    text-decoration: none;
+}
+
 
 @media only screen and (max-width:400px){
     .handy-man-container {

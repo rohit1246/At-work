@@ -2,9 +2,8 @@ from django import forms
 from django.forms import ModelForm
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from .models import personalInfo
+from .models import personalInfo, workRatings
 from PIL import Image
-# from django.core.files.uploadedfile import SimpleUploadedFile
  
 class SignUpForm(UserCreationForm):
     def __init__(self, *args, **kwargs): 
@@ -88,12 +87,6 @@ class SignUpForm(UserCreationForm):
 class DetailsForm(ModelForm):
     def __init__(self, *args, **kwargs): 
         super().__init__(*args, **kwargs)
-        # if self.instance:
-        #     print(self.instance,"-------")
-        #     if self.instance.profile_pic is None:
-        #         print(self.instance.profile_pic)
-
-        #         self.fields['profile_pic'].disabled = True
         self.fields['phoneNumber'].widget.attrs.update({ 
             'class': 'form-input', 
             'required':'', 
@@ -124,14 +117,7 @@ class DetailsForm(ModelForm):
             'maxlength':'50',
             'minlength':'1' 
             })
-        # self.fields['profile_pic'].widget.attrs.update({ 
-        #     'class': 'form-input',
-        #     'required':'False', 
-        #     'blank':'True',
-        #     'name':'profile_pic', 
-        #     'id':'',
-        #     'value':'static/images/user_profile_pics/man.png'
-        #     }) 
+        
         
             
         
@@ -158,4 +144,52 @@ class DetailsForm(ModelForm):
         'phoneNumber', 'state', 'city'
         , 'carrepair', 'painter', 'electrician', 'tutor'
         , 'transport', 'tailor', 'plumber',
+        )
+
+
+
+class RatingsForm(ModelForm):
+    def __init__(self, *args, **kwargs): 
+        super().__init__(*args, **kwargs)
+        self.fields['professionalId'].widget.attrs.update({ 
+            'class': '', 
+            'required':'', 
+            'name':'professionalId', 
+            'id':'', 
+            'type':'text', 
+            'placeholder':'', 
+            'maxlength':'50',
+            'minlength':'1' 
+            })
+        self.fields['customerId'].widget.attrs.update({ 
+            'class': '', 
+            'required':'', 
+            'name':'customerId', 
+            'id':'', 
+            'type':'text', 
+            'placeholder':'',
+            'maxlength':'50',
+            'minlength':'1' 
+            })
+    
+    professionalId = forms.CharField(max_length = 20, label = False)
+    customerId = forms.CharField(max_length = 20, label = False)
+    
+
+
+    electricianRating = forms.IntegerField(required=False)
+    painterRating = forms.IntegerField(required=False)
+    plumberRating = forms.IntegerField(required=False)
+
+    tailorRating = forms.IntegerField(required=False)
+    transportRating = forms.IntegerField(required=False)
+    tutorRating = forms.IntegerField(required=False)
+    carrepairRating = forms.IntegerField(required=False)   
+ 
+    class Meta:
+        model = workRatings
+        fields = (
+        'professionalId', 'customerId'
+        , 'carrepairRating', 'painterRating', 'electricianRating','tutorRating'
+        , 'transportRating', 'tailorRating', 'plumberRating',
         )

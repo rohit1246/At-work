@@ -30,7 +30,6 @@
     <div class="tab">
         <button class="tablinks" onclick="openCity(event, 'auth')" id="defaultOpen">Update user data</button>
         <button class="tablinks" onclick="openCity(event, 'userinfo')">User Information</button>
-        <!-- <button class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</button> -->
     </div>
 
 
@@ -38,22 +37,6 @@
 
             <form action="" method="POST" id="formOne" enctype="multipart/form-data" class="main-container">
                 {% csrf_token %}
-                <!-- <div class="image-sect">
-                    <div class="image-edit">
-                        {% for x in pic %}
-                        {% if x.profile_pic %}
-                        <img src="{{ x.profile_pic.url }}" alt="profile-img" id="profile-img">
-                        {% else %}
-                        <img src="{% static 'images/man.png' %}" alt="profile-img" id="profile-img">
-                        {% endif %}
-                        {% endfor %}
-                    </div>
-                    <div class="upload-pic">
-                        <label class="form-margins">Upload picture</label>
-                        <input type="file" name="profile_pic" class="form-input">
-                        {{detailsform.profile_pic}}
-                    </div>
-                </div> -->
                 <div class="settings-sect">
 
                     <div class="info">
@@ -146,31 +129,11 @@
 
 
 
-        <!-- <form action="" method="POST" class="user-main-container" id="formTwo" >
-                {% csrf_token %}
-                {{userform.first_name}}
-                {{userform.last_name}}
-                <label for="phno." class="form-margins">User name</label>
-                {{userform.username}}
-
-                <label for="email-id" class="form-margins">Email id</label>
-                {{userform.email}}
-
-                <label for="pwd" class="form-margins">Password1</label>
-                {{userform.password1}}
-                <label for="pwd" class="form-margins">Password2</label>
-                {{userform.password2}}
-                <button type="submit" name="form_type" value="formTwo" class="submit-button">
-                    Update
-                </button>
-            </form> -->
+        
 
     </div>
 
-    <!-- <div id="Tokyo" class="tabcontent">
-          <h3>Tokyo</h3>
-          <p>Tokyo is the capital of Japan.</p>
-        </div> -->
+
 
     <script>
         function openCity(evt, req_option) {
@@ -187,7 +150,6 @@
             evt.currentTarget.className += " active";
         }
 
-        // Get the element with id="defaultOpen" and click on it
         document.getElementById("defaultOpen").click();
     </script>
 

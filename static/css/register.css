@@ -1,45 +1,49 @@
 @import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100&display=swap');
 *{
-    /* font-family: 'Charm', cursive; */
-    /* font-family: 'EB Garamond'; */
     font-family: 'League Spartan', sans-serif;
-    /* border: 1px solid black; */
     zoom: 98%;
 }
 
 body {
   margin: 0px;
-  background-color: #fcffe7;
+  background-color: white;
   height: 1000px;
-  background-image: url("../images/bg-4.jpg");
-  background-size: contain;
+  background-image: url('../images/bg-4.jpg');
   position: relative;
 }
 #back-img{
     width: 3%;
     min-width: 30px;
-    margin: 0 0 0 30px;
+    margin: 5px 0 0 30px;
     cursor: pointer;
+    border-radius: 5px;
 }
 #back-img:hover {
-	background: #87cefae3;
+	background: #00E7FF;
 	border-radius: 34px;
 }
 
 
 #page-heading {
+  margin-top: 0px;
+  padding: 15px;
+  color:white;
   text-align: center;
+  background-color: #009EFF;
+  border-radius: 10px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 .login_form {
+  background-color: white;
 	display: flex;
 	flex-direction: column;
 	text-align: center;
 	width: 500px;
-	background: antiquewhite;
-	margin: 0 auto;
-  border-radius: 50px 0;
-  border: 1px solid darkred;
+	margin: 0 auto 0 auto;
+  border-radius: 10px;
+  border: 2px solid #009EFF;
 }
 
 .info {
@@ -65,19 +69,30 @@ body {
   min-width: 115px;
 }
 .workset label{
+  font-family: Microsoft Sans Serif;
   font-weight: bold;
 }
 
 .form-input {
   width: 200px;
+  padding: 8px;
   text-align: center;
   margin: 5px auto;
+  border-color: #00E7FF;
   border-radius: 6px;
+  font-size: 18px;
+  font-weight: bolder;
 }
+
+.form-input:hover{
+  border: 2px solid #0014FF;
+}
+
 .form-margins {
   margin: 5px;
   font-weight: bold;
 }
+
 
 .display-errors {
   display: flex;
@@ -89,6 +104,7 @@ body {
 	padding: 8px 4%;
 	box-sizing: border-box;
 	display: flex;
+  background: none;
 	/* margin: 4% auto; */
 }
 
@@ -104,7 +120,7 @@ body {
 .button-6 {
   align-items: center;
   background-color: #FFFFFF;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid #00E7FF;
   border-radius: .25rem;
   box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
   box-sizing: border-box;
@@ -131,9 +147,9 @@ body {
 
 .button-6:hover,
 .button-6:focus {
-  border-color: rgba(0, 0, 0, 0.15);
-  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
-  color: rgba(0, 0, 0, 0.65);
+  border-color: #009EFF;
+  box-shadow: #009EFF 0 4px 12px;
+  color: #009EFF;
 }
 
 .button-6:hover {

@@ -9,11 +9,11 @@
   <title>At work</title>
   <link rel="stylesheet" href="{% static 'css/work.css' %}" />
   <link rel="shortcut icon" href="{% static 'images/logo2.png' %}" type="image/x-icon">
-
+  
 </head>
 
 <body>
-  
+  <h1 id="page-heading">{{ML}}</h1>
   <h1 id="page-heading">{{worktype}}</h1>
   <a href="{{request.META.HTTP_REFERER}}"><img src="{% static 'images/atwork/back.png'%}" alt="" id="back-img"></a>
   
@@ -22,8 +22,9 @@
 
     {% if newlist %}
 
-    {% for x,y in newlist %}
+    {% for x,y,u in newlist %}
 
+    {% if u %}
     <div class="hm-container">
       <div class="handy-man">
       <div class="handy-man-left-sec">
@@ -33,21 +34,20 @@
           <img src="{% static 'images/call.png' %}" alt="">
           <img src="{% static 'images/whatsapp.png' %}" alt="">
         </div>
-        <!-- <p>available</p> -->
       </div>
       <div class="handy-man-right-sec">
         <p>Name: {{x}}</p>
         <p>Job type: {{worktype}}</p>
-        <!-- <p>Experience: 6yrs+</p> -->
         <p>City: {{y}}</p>
 
         <div class="hm-buttons">
-          <input type="button" value="My work">
-          <input type="button" value="Reviews">
+          <button><a href=" {% url 'ratings' u %} ">Ratings</a></button>
+          
         </div>
       </div>
     </div>
     </div>
+    {% endif %}
     {% endfor %}
 
     {% else %}

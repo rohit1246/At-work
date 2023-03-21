@@ -13,6 +13,8 @@ urlpatterns = [
     path('search/', views.searchPage, name='search'),
     path('profile-settings/', views.settingsPage, name='profile-settings'),
     path('deleteaccount/', views.deleteaccountPage, name='deleteaccount'),
+    path('ratings/<str:u>', views.ratingsPage, name='ratings'),
+    path('about/',views.about,name='about'),
+    path('ourmissions/',views.ourmissions,name='ourmissions'),
 
-    # path('index/', views.index, name='index'),
 ]

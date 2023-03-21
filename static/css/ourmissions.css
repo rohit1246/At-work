@@ -1,0 +1,41 @@
+*{
+    margin:0;
+}
+#container{
+    margin: 20px;
+    padding: 20px;
+    text-align: center;
+}
+#heading{
+    background-color: #009EFF;
+    color: white;
+    padding: 15px;
+}
+.row {
+	display: flex;
+	/* height: 294px; */
+}
+
+element {
+	font-size: 25;
+	padding: 54px;
+}
+
+#innercontainer {
+	/* width: 350px; */
+	/* height: 270px; */
+	padding: 51px;
+	margin: 30px;
+	border: 2px solid #009EFF;
+	font-size: 27px;
+}
+#innercontainer:hover{
+    background-color: #009EFF;
+    color: white;
+}
+.row{
+
+}
+.mission-cont{
+
+}

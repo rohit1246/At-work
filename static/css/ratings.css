@@ -1,0 +1,27 @@
+.rating-inp {
+  width: 28px;
+  text-align: center;
+}
+
+.rating-inp {
+  width: 33px;
+  text-align: center;
+  font-size: 28px;
+}
+
+.rating-div {
+  width: 500px;
+  margin: auto;
+  font-size: 36px;
+}
+
+button {
+	text-decoration: none;
+	font-size: 25px;
+	margin: 20px 121px;
+}
+label{
+    margin: 19px;
+}
+
+h1{margin: 34px 36%;}

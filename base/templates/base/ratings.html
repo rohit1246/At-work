@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>At Work</title>
+    <link rel="stylesheet" href="{% static 'css/ratings.css' %}">
+    <link rel="stylesheet" href="{% static 'css/work.css' %}" />
+</head>
+<body>
+     <h1>Rate the Professional</h1>
+    <form method="post" class="handy-man-container">
+        {% csrf_token %}
+        <div class="rating-div">
+
+        
+        <label for="electricianRating">Rate electrician: </label>
+        <input type="text" id="electricianRating" class="rating-inp" name="electricianRating" value="{{ electricianRating}}">
+        <br>
+
+        <label for="plumberRating">Rate plumber: </label>
+        <input type="text" id="plumberRating" class="rating-inp" name="plumberRating" value="{{ plumberRating }}">
+        <br>
+        <label for="painterRating">Rate painter: </label>
+        <input type="text" id="painterRating" class="rating-inp" name="painterRating" value="{{ painterRating }}">
+        <br>
+        <label for="carrepairRating">Rate carrepair: </label>
+        <input type="text" id="carrepairRating" name="carrepairRating"class="rating-inp"  value="{{ carrepairRating }}">
+        <br>
+        <label for="tailorRating">Rate tailor: </label>
+        <input type="text" id="tailorRating" class="rating-inp"  name="tailorRating" value="{{ tailorRating }}">
+        <br>
+        <label for="transportRating">Rate transport: </label>
+        <input type="text" id="transportRating" name="transportRating" class="rating-inp" value="{{ transportRating }}">
+        <br>
+        <label for="tutorRating">Rate tutor: </label>
+        <input type="text" id="tutorRating" class="rating-inp" name="tutorRating" value="{{ tutorRating }}">
+        <br>
+        <button type="submit">Submit</button>
+    </div>
+      </form>
+      
+</form> 
+</body>
+</html>

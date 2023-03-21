@@ -1,11 +1,9 @@
 function openLoginForm(){
     document.getElementById("login_signup_form").style.display = "block";
-    // document.getElementById("#login_form_bg").style.display = "block";
 }
 
 function closeLoginForm(){
     document.getElementById("login_signup_form").style.display = "none";
-    // document.getElementById("#login_form_bg").style.display = "none";
 }
 
 function toggleProfileDropdown(){
