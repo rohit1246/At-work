@@ -90,7 +90,7 @@ To set up a virtual environment, use the following steps.
    ```
 6. Clone the repo
    ```sh
-   git clone https://github.com/Visweswar39/At-Work.git
+   git clone https://github.com/rohit1246/At-Work.git
    ```
 
 And now runserver using command
