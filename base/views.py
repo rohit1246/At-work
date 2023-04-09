@@ -317,27 +317,9 @@ def searchPage(request):
 
 
     if worktype == 'electrician':
-        worktype = 'Electricians'
         return electricianWork(request, worktype, given_city)
-    elif worktype == 'carrepair':
-        worktype = 'Car repair'
-        return carrepairWork(request, worktype, given_city)
-    elif worktype == 'tailor':
-        worktype = 'Tailors'
-        return tailorWork(request, worktype, given_city)
-    elif worktype == 'transport':
-        worktype = 'Transport'
-        return transportWork(request, worktype, given_city)
-    elif worktype == 'tutor':
-        worktype = 'Tutors'
-        return tutorWork(request, worktype, given_city)
-    elif worktype == 'painter':
-        worktype = 'Painters'
-        return painterWork(request, worktype, given_city)
-    elif worktype == 'plumber':
-        # worktype = 'Plumbers'
-        print(worktype)
-        return plumberWork(request, worktype, given_city)
+    else:
+        return specificWork(request, worktype, given_city)
     
     return render(request, 'home.html')
 
@@ -460,7 +442,6 @@ def electricianWork(request, worktype, given_city=""):
         if u is not checkUser:
             try:
                 idx = userlist.index(u)
-                print(idx)
                 newuserlist.append(u)
                 newfirstnamelist.append(firstnamelist[idx])
                 newcitylist.append(citylist[idx])

@@ -16,5 +16,4 @@ urlpatterns = [
     path('ratings/<str:u>', views.ratingsPage, name='ratings'),
     path('about/',views.about,name='about'),
     path('ourmissions/',views.ourmissions,name='ourmissions'),
-
 ]
