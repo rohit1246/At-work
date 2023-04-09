@@ -335,7 +335,8 @@ def searchPage(request):
         worktype = 'Painters'
         return painterWork(request, worktype, given_city)
     elif worktype == 'plumber':
-        worktype = 'Plumbers'
+        # worktype = 'Plumbers'
+        print(worktype)
         return plumberWork(request, worktype, given_city)
     
     return render(request, 'home.html')
@@ -361,31 +362,25 @@ def recommendation(loggedinuser):
 
 def workPage(request, worktype):
 
-    if worktype == 'Electricians':
+    if worktype == 'electrician':
         return electricianWork(request, worktype)
-    elif worktype == 'Car repair':
-        return carrepairWork(request, worktype)
-    elif worktype == 'Tailors':
-        return tailorWork(request, worktype)
-    elif worktype == 'Transport':
-        return transportWork(request, worktype)
-    elif worktype == 'Tutors':
-        return tutorWork(request, worktype)
-    elif worktype == 'Painters':
-        return painterWork(request, worktype)
-    elif worktype == 'Plumbers':
-        return plumberWork(request, worktype)
+    else:
+        print(worktype)
+        return specificWork(request, worktype)
     
     return render(request, 'home.html')
 
-def plumberWork(request, worktype, given_city=""):
+def specificWork(request, worktype, given_city=""):
     input_city = False
+    val = True
+    workcheck = { worktype: val}
+
     if given_city:
-        inform = personalInfo.objects.all().filter(plumber = True, city = given_city)
-        details = personalInfo.objects.all().filter(plumber = True, city = given_city).values()
+        inform = personalInfo.objects.all().filter(**workcheck, city = given_city)
+        details = personalInfo.objects.all().filter(**workcheck, city = given_city).values()
     else:
-        inform = personalInfo.objects.all().filter(plumber = True)
-        details = personalInfo.objects.all().filter(plumber = True).values()
+        inform = personalInfo.objects.all().filter(**workcheck)
+        details = personalInfo.objects.all().filter(**workcheck).values()
     
     userlist = []
     firstnamelist = []
@@ -415,244 +410,19 @@ def plumberWork(request, worktype, given_city=""):
     
     return render(request, 'base/work.html', context)
 
-def painterWork(request, worktype, given_city=""):
-    input_city = False
-    if given_city:
-        inform = personalInfo.objects.all().filter(painter = True, city = given_city)
-        details = personalInfo.objects.all().filter(painter = True, city = given_city).values()
-    else:
-        inform = personalInfo.objects.all().filter(painter = True)
-        details = personalInfo.objects.all().filter(painter = True).values()
-
-    userlist = []
-    firstnamelist = []
-    citylist = []
-    for x in inform:
-        user = User.objects.get(username=x)
-        if user == request.user:
-            userlist.append(None)
-            firstnamelist.append(user.first_name)
-        else:
-            userlist.append(user)
-            firstnamelist.append(user.first_name)
-
-    for d in details:
-        citylist.append(d['city'])
-
-    newlist = zip(firstnamelist, citylist, userlist)
-    
-    if newlist == [] and input_city == True:
-        newlist = None
-        input_city = True
-    elif newlist == [] and input_city == False:
-        input_city = None
-        newlist = True
-    
-    context = {'worktype': worktype, 'inform': inform, 'firstnamelist':firstnamelist, 'citylist':citylist, 'newlist':newlist, 'input_city':input_city}
-    
-    return render(request, 'base/work.html', context)
-
-def tutorWork(request, worktype, given_city=""):
-    input_city = False
-    if given_city:
-        inform = personalInfo.objects.all().filter(tutor = True, city = given_city)
-        details = personalInfo.objects.all().filter(tutor = True, city = given_city).values()
-    else:
-        inform = personalInfo.objects.all().filter(tutor = True)
-        details = personalInfo.objects.all().filter(tutor = True).values()
-
-    userlist = []
-    firstnamelist = []
-    citylist = []
-    for x in inform:
-        user = User.objects.get(username=x)
-        if user == request.user:
-            userlist.append(None)
-            firstnamelist.append(user.first_name)
-        else:
-            userlist.append(user)
-            firstnamelist.append(user.first_name)
-
-    for d in details:
-        citylist.append(d['city'])
-
-    newlist = zip(firstnamelist, citylist, userlist)
-    
-    if newlist == [] and input_city == True:
-        newlist = None
-        input_city = True
-    elif newlist == [] and input_city == False:
-        input_city = None
-        newlist = True
-    
-    context = {'worktype': worktype, 'inform': inform, 'firstnamelist':firstnamelist, 'citylist':citylist, 'newlist':newlist, 'input_city':input_city}
-    
-    return render(request, 'base/work.html', context)
-
-def transportWork(request, worktype, given_city=""):
-
-    input_city = False
-    if given_city:
-        inform = personalInfo.objects.all().filter(transport = True, city = given_city)
-        details = personalInfo.objects.all().filter(transport = True, city = given_city).values()
-    else:
-        inform = personalInfo.objects.all().filter(transport = True)
-        details = personalInfo.objects.all().filter(transport = True).values()
-
-    userlist = []
-    firstnamelist = []
-    citylist = []
-    for x in inform:
-        user = User.objects.get(username=x)
-        if user == request.user:
-            userlist.append(None)
-            firstnamelist.append(user.first_name)
-        else:
-            userlist.append(user)
-            firstnamelist.append(user.first_name)
-
-    for d in details:
-        citylist.append(d['city'])
-
-    newlist = zip(firstnamelist, citylist, userlist)
-    
-    if newlist == [] and input_city == True:
-        newlist = None
-        input_city = True
-    elif newlist == [] and input_city == False:
-        input_city = None
-        newlist = True
-    
-    context = {'worktype': worktype, 'inform': inform, 'firstnamelist':firstnamelist, 'citylist':citylist, 'newlist':newlist, 'input_city':input_city}
-    
-    return render(request, 'base/work.html', context)
-
-def tailorWork(request, worktype, given_city=""):
-
-    input_city = False
-    if given_city:
-        inform = personalInfo.objects.all().filter(tailor = True, city = given_city)
-        details = personalInfo.objects.all().filter(tailor = True, city = given_city).values()
-    else:
-        inform = personalInfo.objects.all().filter(tailor = True)
-        details = personalInfo.objects.all().filter(tailor = True).values()
-
-
-    userlist = []
-    firstnamelist = []
-    citylist = []
-    for x in inform:
-        user = User.objects.get(username=x)
-        if user == request.user:
-            userlist.append(None)
-            firstnamelist.append(user.first_name)
-        else:
-            userlist.append(user)
-            firstnamelist.append(user.first_name)
-
-    for d in details:
-        citylist.append(d['city'])
-
-    newlist = zip(firstnamelist, citylist, userlist)
-    
-    if newlist == [] and input_city == True:
-        newlist = None
-        input_city = True
-    elif newlist == [] and input_city == False:
-        input_city = None
-        newlist = True
-    
-    context = {'worktype': worktype, 'inform': inform, 'firstnamelist':firstnamelist, 'citylist':citylist, 'newlist':newlist, 'input_city':input_city}
-    
-    return render(request, 'base/work.html', context)
-
-def carrepairWork(request, worktype, given_city=""):
-    input_city = False
-
-    if given_city:
-        inform = personalInfo.objects.all().filter(carrepair = True, city = given_city)
-        details = personalInfo.objects.all().filter(carrepair = True, city = given_city).values()
-    else:
-        inform = personalInfo.objects.all().filter(carrepair = True)
-        details = personalInfo.objects.all().filter(carrepair = True).values()
-
-    userlist = []
-    firstnamelist = []
-    citylist = []
-    for x in inform:
-        user = User.objects.get(username=x)
-        if user == request.user:
-            userlist.append(None)
-            firstnamelist.append(user.first_name)
-        else:
-            userlist.append(user)
-            firstnamelist.append(user.first_name)
-
-    for d in details:
-        citylist.append(d['city'])
-
-    newlist = zip(firstnamelist, citylist, userlist)
-    
-    if newlist == [] and input_city == True:
-        newlist = None
-        input_city = True
-    elif newlist == [] and input_city == False:
-        input_city = None
-        newlist = True
-    
-    context = {'worktype': worktype, 'inform': inform, 'firstnamelist':firstnamelist, 'citylist':citylist, 'newlist':newlist, 'input_city':input_city}
-    
-    return render(request, 'base/work.html', context)
 
 def electricianWork(request, worktype, given_city=""):
     input_city = False
+    val = True
+    workcheck = { worktype: val}
 
     if given_city:        
-        inform = personalInfo.objects.all().filter(electrician = True, city = given_city)
-        details = personalInfo.objects.all().filter(electrician = True, city = given_city).values()
+        inform = personalInfo.objects.all().filter(**workcheck, city = given_city)
+        details = personalInfo.objects.all().filter(**workcheck, city = given_city).values()
         input_city = True
     else:
-        inform = personalInfo.objects.all().filter(electrician = True)
-        details = personalInfo.objects.all().filter(electrician = True).values()
-
-    userlist = []
-    firstnamelist = []
-    citylist = []
-    for x in inform:
-        user = User.objects.get(username=x)
-        if user == request.user:
-            userlist.append(None)
-            firstnamelist.append(user.first_name)
-        else:
-            userlist.append(user)
-            firstnamelist.append(user.first_name)
-
-    for d in details:
-        citylist.append(d['city'])
-
-    newlist = zip(firstnamelist, citylist, userlist)
-    
-    if newlist == [] and input_city == True:
-        newlist = None
-        input_city = True
-    elif newlist == [] and input_city == False:
-        input_city = None
-        newlist = True
-    
-    context = {'worktype': worktype, 'inform': inform, 'firstnamelist':firstnamelist, 'citylist':citylist, 'newlist':newlist, 'input_city':input_city}
-    
-    return render(request, 'base/work.html', context)
-
-def electricianWork(request, worktype, given_city=""):
-    input_city = False
-
-    if given_city:        
-        inform = personalInfo.objects.all().filter(electrician = True, city = given_city)
-        details = personalInfo.objects.all().filter(electrician = True, city = given_city).values()
-        input_city = True
-    else:
-        inform = personalInfo.objects.all().filter(electrician = True)
-        details = personalInfo.objects.all().filter(electrician = True).values()
+        inform = personalInfo.objects.all().filter(**workcheck)
+        details = personalInfo.objects.all().filter(**workcheck).values()
 
     
     userlist = []
