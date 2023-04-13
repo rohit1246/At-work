@@ -114,6 +114,12 @@ def registerPage(request):
     
     return render(request, 'base/register.html', context)
 
+# def proRatings(request, u):
+#     context = {}
+
+    
+
+#     return render(request, 'base/ratings.html', context)
 
 def ratingsPage(request, u):
 
@@ -123,8 +129,30 @@ def ratingsPage(request, u):
     
     user = request.user
     context = {}
+    
+    professId = User.objects.get(username = u).id
+    profess = personalInfo.objects.all().filter(email = professId).values()
+    
+    workcheck = []
+    for pro in profess:
+        if pro['electrician'] == True:
+            workcheck.append('electrician')
+        if pro['plumber'] == True:
+            workcheck.append('plumber')
+        if pro['painter'] == True:
+            workcheck.append('painter')
+        if pro['tailor'] == True:
+            workcheck.append('tailor')
+        if pro['carrepair'] == True:
+            workcheck.append('carrepair')
+        if pro['tutor'] == True:
+            workcheck.append('tutor')
+        if pro['transport'] == True:
+            workcheck.append('transport')
+        
     try:
         ratingsform = workRatings.objects.get(professionalId=u,custoId=user)
+
         electricianRating = ratingsform.electricianRating
         plumberRating = ratingsform.plumberRating
         painterRating = ratingsform.painterRating
@@ -132,6 +160,7 @@ def ratingsPage(request, u):
         tailorRating = ratingsform.tailorRating
         transportRating = ratingsform.transportRating
         tutorRating = ratingsform.tutorRating
+
         context = { 'electricianRating': electricianRating,
                     'plumberRating': plumberRating,
                     'painterRating': painterRating,
@@ -144,7 +173,7 @@ def ratingsPage(request, u):
     
     if request.method == 'POST':
         try:
-            print(u)
+            # print(u)
             ratingsform = workRatings.objects.get(professionalId=u,custoId=user)
             print(ratingsform)
             ratingsform.electricianRating= request.POST.get('electricianRating')
@@ -175,7 +204,7 @@ def ratingsPage(request, u):
             rate = workRatings()
             rate.professionalId = u
             rate.custoId = user
-            print(rate)
+            
             rate.electricianRating= request.POST.get('electricianRating')
             rate.plumberRating= request.POST.get('plumberRating')
             rate.painterRating= request.POST.get('painterRating')
@@ -200,7 +229,7 @@ def ratingsPage(request, u):
                     'transportRating':transportRating,
                     'tutorRating':tutorRating,
                     }
-        
+    context.update({'workcheck':workcheck})
     return render(request, 'base/ratings.html', context)
 
 def settingsPage(request):
@@ -324,7 +353,6 @@ def searchPage(request):
     return render(request, 'home.html')
 
 
-
 def recommendation(loggedinuser):
     knnmodel=pickle.load(open('base/pickles/model.pkl','rb'))
     fnames_new = pickle.load(open('base/pickles/fnames.pkl','rb'))
@@ -347,7 +375,6 @@ def workPage(request, worktype):
     if worktype == 'electrician':
         return electricianWork(request, worktype)
     else:
-        print(worktype)
         return specificWork(request, worktype)
     
     return render(request, 'home.html')

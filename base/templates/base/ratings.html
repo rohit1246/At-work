@@ -4,40 +4,68 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale = 1.0">
     <title>At Work</title>
     <link rel="stylesheet" href="{% static 'css/ratings.css' %}">
     <link rel="stylesheet" href="{% static 'css/work.css' %}" />
+    <link rel="shortcut icon" href="{% static 'images/logo2.png' %}" type="image/x-icon">
 </head>
 <body>
      <h1>Rate the Professional</h1>
+
+     <a href="{{request.META.HTTP_REFERER}}"><img src="{% static 'images/atwork/back.png'%}" alt="" id="back-img"></a>
+
     <form method="post" class="handy-man-container">
         {% csrf_token %}
         <div class="rating-div">
 
-        
+        {% if "electrician" in workcheck %}
         <label for="electricianRating">Rate electrician: </label>
-        <input type="text" id="electricianRating" class="rating-inp" name="electricianRating" value="{{ electricianRating}}">
+        <input type="text" id="electricianRating" class="rating-inp" name="electricianRating" value="{{electricianRating}}">
         <br>
-
+        {% endif %}
+        
+        
+        {% if "plumber" in workcheck %}
         <label for="plumberRating">Rate plumber: </label>
-        <input type="text" id="plumberRating" class="rating-inp" name="plumberRating" value="{{ plumberRating }}">
+        <input type="text" id="plumberRating" class="rating-inp" name="plumberRating" value="{{plumberRating }}">
         <br>
+        {% endif %}
+
+        {% if "painter" in workcheck %}
         <label for="painterRating">Rate painter: </label>
         <input type="text" id="painterRating" class="rating-inp" name="painterRating" value="{{ painterRating }}">
         <br>
+        {% endif %}
+        
+
+        {% if "carrepair" in workcheck %}
         <label for="carrepairRating">Rate carrepair: </label>
         <input type="text" id="carrepairRating" name="carrepairRating"class="rating-inp"  value="{{ carrepairRating }}">
         <br>
+        {% endif %}
+        
+
+        {% if "tailor" in workcheck %}
         <label for="tailorRating">Rate tailor: </label>
         <input type="text" id="tailorRating" class="rating-inp"  name="tailorRating" value="{{ tailorRating }}">
         <br>
+        {% endif %}
+        
+
+        {% if "transport" in workcheck %}
         <label for="transportRating">Rate transport: </label>
         <input type="text" id="transportRating" name="transportRating" class="rating-inp" value="{{ transportRating }}">
         <br>
+        {% endif %}
+        
+
+        {% if "tutor" in workcheck %}
         <label for="tutorRating">Rate tutor: </label>
         <input type="text" id="tutorRating" class="rating-inp" name="tutorRating" value="{{ tutorRating }}">
         <br>
+        {% endif %}
+        
         <button type="submit">Submit</button>
     </div>
       </form>
